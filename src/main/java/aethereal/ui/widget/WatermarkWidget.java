@@ -8,6 +8,7 @@ import aethereal.render.ColorUtil;
 import aethereal.render.Draw2DProcessor;
 import aethereal.render.EasingList;
 import aethereal.render.Fonts;
+import aethereal.render.LogoGif;
 import aethereal.setting.BooleanSetting;
 import aethereal.ui.element.DragInfo;
 import aethereal.util.MathUtil;
@@ -87,8 +88,14 @@ public class WatermarkWidget extends Widget implements Interface {
     }
 
     private void b(DrawEvent event, float x, float y, float size) {
-        Desrexsive.getInstance().getModuleProcessor().i().a(event.h(),
-                Identifier.of("desrexsive", "pictures/logo.png"), x, y, size, size, 0.0f, -1, true);
+        Draw2DProcessor draw2D = Desrexsive.getInstance().getModuleProcessor().i();
+        int gifTexture = LogoGif.ready() ? LogoGif.currentGlId() : -1;
+        if (gifTexture != -1) {
+            draw2D.a(event.h(), x, y, size, size, 0.0f, -1, 0.0f, 0.0f, 1.0f, 1.0f, gifTexture);
+        } else {
+            draw2D.a(event.h(),
+                    Identifier.of("desrexsive", "pictures/logo.png"), x, y, size, size, 0.0f, -1, true);
+        }
     }
 
     private void a(DrawEvent event, float x, float y, float width, String[][] sections, boolean logo, int primaryColor, float iconSize, float logoSize, float startPadding, float sectionGap, float iconTextGap, float logoGap, float textYOffset) {

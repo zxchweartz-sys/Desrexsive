@@ -183,7 +183,12 @@ public class StationScreen extends Screen {
         this.c.x = this.b.x + ((this.b.z - this.c.z) / 2.0f);
         this.c.y = this.b.y + 8.0f;
         draw.a(context.getMatrices(), this.c.x, this.c.y, this.c.z, this.c.w, 6.0f, 0.5f, ColorUtil.convertToARGB(255, 255, 255, 4));
-        draw.a(context.getMatrices(), Identifier.of("desrexsive", "pictures/logo.png"), this.b.x + 8.0f, this.c.y + ((this.c.w - 14.0f) / 2.0f), 14.0f, 14.0f, 0.0f, ColorUtil.convertToARGB(255, 255, 255, (int) (255.0f * 0.75f)), true);
+        int gifTexture = LogoGif.ready() ? LogoGif.currentGlId() : -1;
+        if (gifTexture != -1) {
+            draw.a(context.getMatrices(), this.b.x + 8.0f, this.c.y + ((this.c.w - 14.0f) / 2.0f), 14.0f, 14.0f, 0.0f, ColorUtil.convertToARGB(255, 255, 255, (int) (255.0f * 0.75f)), 0.0f, 0.0f, 1.0f, 1.0f, gifTexture);
+        } else {
+            draw.a(context.getMatrices(), Identifier.of("desrexsive", "pictures/logo.png"), this.b.x + 8.0f, this.c.y + ((this.c.w - 14.0f) / 2.0f), 14.0f, 14.0f, 0.0f, ColorUtil.convertToARGB(255, 255, 255, (int) (255.0f * 0.75f)), true);
+        }
         float separatorX = this.b.x + 8.0f + 14.0f + 8.0f;
         draw.a(context.getMatrices(), separatorX, this.c.y + ((this.c.w - 8.0f) / 2.0f), 0.75f, 8.0f, 0.0f, ColorUtil.convertToARGB(255, 255, 255, 25));
         float avatarX = ((this.b.x + this.b.z) - 12.0f) - 8.0f;
