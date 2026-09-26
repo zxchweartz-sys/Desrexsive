@@ -22,10 +22,11 @@ import net.minecraft.client.network.ServerInfo;
  * НАСТРОЙКА:
  *  1. Откройте https://discord.com/developers/applications → New Application
  *  2. Скопируйте 19-значный Application ID и вставьте его в APPLICATION_ID ниже
- *  3. В разделе Rich Presence → Art Assets загрузите картинку логотипа
- *     с ключом (имя ассета): desrexsive
- *     (в логах в поле assets.large_image Discord подставляет её ID —
- *     значит ассет распознан; кнопки при этом отправляются и принимаются)
+ *  3. Большая картинка активности — это внешний URL (LARGE_IMAGE_KEY).
+ *     Сейчас там прямой линк на анимированный GIF лого из GitHub-репозитория:
+ *     https://raw.githubusercontent.com/zxchweartz-sys/Desrexsive/main/pictures/Desrexsive_Logo_3D_Glow.gif
+ *     (Discord принимает http(s)-URL в поле assets.large_image;
+ *      также можно вернуть ключ ассета из разделав Rich Presence → Art Assets)
  *  Кнопки видны только в личном статусе (профиль по клику на ник/аватарку),
  *  в списке участников сервера их нет.
  */
@@ -36,7 +37,7 @@ public class DiscordProcessor extends BaseProcessor {
     // ======================================================================
     private static final long APPLICATION_ID = 1552687471597199510L;
 
-    private static final String LARGE_IMAGE_KEY = "desrexsive";
+    private static final String LARGE_IMAGE_KEY = "https://raw.githubusercontent.com/zxchweartz-sys/Desrexsive/main/pictures/Desrexsive_Logo_3D_Glow.gif";
     private static final String LARGE_IMAGE_TEXT = "Desrexsive";
 
     private static final String BTN_A_LABEL = "Desrexsive DLC";
